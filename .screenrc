@@ -1,0 +1,34 @@
+# detach on hangup
+autodetach on
+
+# not sure what these do
+defscrollback 1000
+defflow off
+
+# bottom line display
+hardstatus alwayslastline "%w"
+
+# use ctrl-j instead of ctrl-a to interact with screen
+escape ^jj
+
+######################################################################
+# from: http://frexx.de/xterm-256-notes/: get emacs with color
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# erase background with current bg color
+defbce "on"
+######################################################################
+
+# default is to have two screens.  Put mail on zero, and a terminal on 1
+screen -t dev 0
+screen 1
+
+# Added for text highlighting
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce "on"
+term screen-256color-bce
+
